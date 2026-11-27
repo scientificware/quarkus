@@ -1,4 +1,4 @@
-<svg xmlns="http://w3.org" viewBox="0 0 920 560" width="100%" height="auto" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<svg xmlns="http://w3.org" viewBox="0 0 920 560" width="920" height="560" font-family="system-ui, sans-serif">
   <defs>
     <!-- Dégradés -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
