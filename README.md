@@ -1,4 +1,4 @@
 # quarkus
 Description du FrameWork Qwarkus
 
-![Image non disponible](./description_fonctionnement.svg?sanitize=true)
+![Image non disponible](description_fonctionnement.svg)
