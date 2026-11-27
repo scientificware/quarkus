@@ -1,3 +1,144 @@
-<svg width="200pt" height="200pt" viewBox="0.00 0.00 200.00 200.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <polygon points="100,20 180,180 20,180" fill="red" stroke="blue" stroke-width="5" transform="rotate(60 100 100)" />
+<svg width="200pt" height="200pt" viewBox="0.00 0.00 950.00 560.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <!-- <svg xmlns="http://w3.org" viewBox="0 0 920 560" width="920" height="560" font-family="system-ui, sans-serif"> -->
+  <defs>
+    <!-- Dégradés -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="buildGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="jvmGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#047857" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#065f46" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="nativeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#92400e" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- Flèches -->
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#60a5fa"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Fond principal -->
+  <rect width="920" height="560" rx="14" fill="url(#bgGrad)"/>
+
+  <!-- En-tête -->
+  <text x="460" y="38" fill="#f8fafc" font-size="20" font-weight="700" text-anchor="middle">Architecture et Cycle de Compilation de Quarkus</text>
+  <text x="460" y="60" fill="#94a3b8" font-size="13" text-anchor="middle">Principe clé : Déplacer l'initialisation du Runtime vers le Build-Time</text>
+
+  <!-- ================= COLONNE 1 : SOURCES ================= -->
+  <g transform="translate(30, 95)">
+    <rect width="190" height="360" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="95" y="28" fill="#e2e8f0" font-size="14" font-weight="700" text-anchor="middle">1. Sources &amp; Config</text>
+    <line x1="15" y1="40" x2="175" y2="40" stroke="#334155" stroke-width="1"/>
+
+    <!-- Bloc Code -->
+    <rect x="18" y="58" width="154" height="75" rx="7" fill="#0f172a" stroke="#475569"/>
+    <text x="95" y="83" fill="#38bdf8" font-size="13" font-weight="600" text-anchor="middle">Code Applicatif</text>
+    <text x="95" y="102" fill="#cbd5e1" font-size="11" text-anchor="middle">Classes Java / Kotlin</text>
+    <text x="95" y="118" fill="#94a3b8" font-size="10" text-anchor="middle">Annotations (@Path, @Inject)</text>
+
+    <!-- Bloc Extensions -->
+    <rect x="18" y="150" width="154" height="80" rx="7" fill="#0f172a" stroke="#475569"/>
+    <text x="95" y="175" fill="#38bdf8" font-size="13" font-weight="600" text-anchor="middle">Extensions Quarkus</text>
+    <text x="95" y="194" fill="#cbd5e1" font-size="11" text-anchor="middle">REST, Hibernate, Swing,</text>
+    <text x="95" y="210" fill="#94a3b8" font-size="10" text-anchor="middle">Kafka, Security, etc.</text>
+
+    <!-- Bloc Config -->
+    <rect x="18" y="248" width="154" height="75" rx="7" fill="#0f172a" stroke="#475569"/>
+    <text x="95" y="273" fill="#38bdf8" font-size="13" font-weight="600" text-anchor="middle">Configuration</text>
+    <text x="95" y="292" fill="#cbd5e1" font-size="11" text-anchor="middle">application.properties</text>
+    <text x="95" y="308" fill="#94a3b8" font-size="10" text-anchor="middle">Paramètres Build &amp; Runtime</text>
+  </g>
+
+  <!-- Flèches Col 1 -> Col 2 -->
+  <line x1="220" y1="190" x2="262" y2="190" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <line x1="220" y1="285" x2="262" y2="285" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <line x1="220" y1="380" x2="262" y2="380" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <!-- ================= COLONNE 2 : BUILD TIME ================= -->
+  <g transform="translate(270, 95)">
+    <rect width="310" height="360" rx="10" fill="url(#buildGrad)" stroke="#3b82f6" stroke-width="2"/>
+    <text x="155" y="28" fill="#93c5fd" font-size="14" font-weight="700" text-anchor="middle">2. Phase de Build (Maven / Gradle)</text>
+    <text x="155" y="45" fill="#bfdbfe" font-size="11" text-anchor="middle">Traitement statique effectué UNE SEULE FOIS</text>
+    <line x1="15" y1="55" x2="295" y2="55" stroke="#3b82f6" stroke-opacity="0.5" stroke-width="1"/>
+
+    <!-- Étape A -->
+    <rect x="20" y="70" width="270" height="62" rx="7" fill="#0f172a" stroke="#60a5fa"/>
+    <text x="34" y="92" fill="#60a5fa" font-size="12" font-weight="700">A. Analyse statique (Jandex)</text>
+    <text x="34" y="110" fill="#e2e8f0" font-size="11">Scan des classes, annotations et injection</text>
+    <text x="34" y="124" fill="#94a3b8" font-size="10">de dépendances (CDI ArC) sans réflexion coûteuse</text>
+
+    <!-- Étape B -->
+    <rect x="20" y="146" width="270" height="62" rx="7" fill="#0f172a" stroke="#60a5fa"/>
+    <text x="34" y="168" fill="#60a5fa" font-size="12" font-weight="700">B. Exécution des Build Steps</text>
+    <text x="34" y="186" fill="#e2e8f0" font-size="11">Parsing des configs, création des métamodèles</text>
+    <text x="34" y="200" fill="#94a3b8" font-size="10">et élimination du code mort (Dead Code Elimination)</text>
+
+    <!-- Étape C -->
+    <rect x="20" y="222" width="270" height="62" rx="7" fill="#0f172a" stroke="#60a5fa"/>
+    <text x="34" y="244" fill="#60a5fa" font-size="12" font-weight="700">C. Génération de Bytecode (Gizmo)</text>
+    <text x="34" y="262" fill="#e2e8f0" font-size="11">Écriture directe du code d'initialisation</text>
+    <text x="34" y="276" fill="#94a3b8" font-size="10">(remplace la découverte dynamique au démarrage)</text>
+
+    <!-- Étape D -->
+    <rect x="20" y="298" width="270" height="48" rx="7" fill="#1e3a8a" stroke="#93c5fd"/>
+    <text x="155" y="319" fill="#ffffff" font-size="11.5" font-weight="700" text-anchor="middle">D. Métadonnées GraalVM automatisées</text>
+    <text x="155" y="335" fill="#dbeafe" font-size="10" text-anchor="middle">Réflexion, JNI, Ressources et Proxys pré-enregistrés</text>
+  </g>
+
+  <!-- Flèches Col 2 -> Col 3 -->
+  <path d="M 580 210 C 610 210, 610 180, 632 180" fill="none" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <path d="M 580 340 C 610 340, 610 370, 632 370" fill="none" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
+
+  <!-- ================= COLONNE 3 : RUNTIME ================= -->
+  <g transform="translate(640, 95)">
+    <text x="125" y="18" fill="#e2e8f0" font-size="14" font-weight="700" text-anchor="middle">3. Exécution (Runtime)</text>
+
+    <!-- Option 1 : Mode JVM -->
+    <g transform="translate(0, 32)">
+      <rect width="250" height="152" rx="10" fill="url(#jvmGrad)" stroke="#10b981" stroke-width="1.5"/>
+      <text x="125" y="25" fill="#6ee7b7" font-size="13.5" font-weight="700" text-anchor="middle">Mode JVM Classique (OpenJDK)</text>
+      <line x1="15" y1="35" x2="235" y2="35" stroke="#10b981" stroke-opacity="0.4"/>
+
+      <text x="18" y="56" fill="#ecfdf5" font-size="11.5" font-weight="600">• Livrable : Fast-JAR optimisé</text>
+      <text x="18" y="76" fill="#d1fae5" font-size="11">• Exécute uniquement le bytecode</text>
+      <text x="26" y="90" fill="#d1fae5" font-size="11">généré au build-time</text>
+      <text x="18" y="112" fill="#6ee7b7" font-size="11" font-weight="600">✓ Démarrage rapide (~0.5 - 1s)</text>
+      <text x="18" y="130" fill="#6ee7b7" font-size="11" font-weight="600">✓ Débit maximal (JIT HotSpot)</text>
+    </g>
+
+    <!-- Option 2 : Mode Natif -->
+    <g transform="translate(0, 204)">
+      <rect width="250" height="156" rx="10" fill="url(#nativeGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="125" y="25" fill="#fcd34d" font-size="13.5" font-weight="700" text-anchor="middle">Mode Natif (GraalVM / Mandrel)</text>
+      <line x1="15" y1="35" x2="235" y2="35" stroke="#f59e0b" stroke-opacity="0.4"/>
+
+      <text x="18" y="56" fill="#fffbeb" font-size="11.5" font-weight="600">• Livrable : Binaire autonome (OS)</text>
+      <text x="18" y="76" fill="#fef3c7" font-size="11">• Compilation AOT + SubstrateVM</text>
+      <text x="26" y="90" fill="#fef3c7" font-size="11">(sans JVM externe requise)</text>
+      <text x="18" y="112" fill="#fcd34d" font-size="11" font-weight="600">✓ Démarrage instantané (~15-50 ms)</text>
+      <text x="18" y="130" fill="#fcd34d" font-size="11" font-weight="600">✓ Empreinte RAM très faible</text>
+    </g>
+  </g>
+
+  <!-- Bandeau bas : Résumé comparatif -->
+  <g transform="translate(30, 478)">
+    <rect width="860" height="58" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="24" fill="#38bdf8" font-size="12" font-weight="700">Pourquoi est-ce si léger ?</text>
+    <text x="20" y="43" fill="#cbd5e1" font-size="11.5">Toutes les classes utilisées uniquement pour lire la configuration ou câbler les composants au build sont supprimées de l'application finale.</text>
+  </g>
 </svg>
